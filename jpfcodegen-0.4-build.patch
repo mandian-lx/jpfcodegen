@@ -1,0 +1,53 @@
+--- jpfcodegen-0.4/build.xml.orig	2008-11-12 13:06:21.000000000 +0100
++++ jpfcodegen-0.4/build.xml	2014-07-14 16:44:04.554381291 +0200
+@@ -34,17 +34,17 @@
+ 	<property name="lib" value="lib" />
+ 
+ 	<!-- Build classpath -->
+-	<path id="classpath">
++	<!--path id="classpath">
+ 		<pathelement path="${build}" />
+ 		<pathelement location="${lib}/jpf.jar" />
+ 		<pathelement location="${lib}/jpf-boot.jar" />
+ 		<pathelement location="${lib}/velocity-dep-1.5.jar" />
+ 		<pathelement location="${lib}/commons-logging.jar" />
+-	</path>
++	</path-->
+ 
+ 	<target name="run" depends="compile">
+ 		<java classname="net.sf.jabref.plugin.util.CodeGenerator" fork="true">
+-			<classpath refid="classpath" />
++			<!--classpath refid="classpath" /-->
+ 		</java>
+ 	</target>
+ 
+@@ -52,12 +52,12 @@
+ 		<mkdir dir="${build}" />
+ 		<javac debug="on" deprecation="on" destdir="${build}" source="1.5" target="1.5">
+ 			<src path="${src}" />
+-			<classpath refid="classpath" />
++			<!--classpath refid="classpath" /-->
+ 		</javac>
+ 	</target>
+ 
+ 	<!-- Jars up project -->
+-	<target name="jars" depends="compile, unjarlib">
++	<target name="jars" depends="compile">
+ 		<jar destfile="${jar}.jar">
+ 			<fileset dir="${build}" />
+ 			<fileset dir=".">
+@@ -87,12 +87,12 @@
+ 		</jar>
+ 	</target>
+ 
+-	<target name="unjarlib" description="Unpacks jars from library">
++	<!--target name="unjarlib" description="Unpacks jars from library">
+ 		<unjar src="lib/jpf.jar" dest="${build}" />
+ 		<unjar src="lib/jpf-boot.jar" dest="${build}" />
+ 		<unjar src="lib/velocity-dep-1.5.jar" dest="${build}" />
+ 		<unjar src="lib/commons-logging.jar" dest="${build}" />
+-	</target>
++	</target-->
+ 
+ 	<target name="clean" description="Clean project">
+ 		<delete dir="${build.dir}" />
